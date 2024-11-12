@@ -26,19 +26,25 @@ const page = async ({ }: pageProps) => {
                         uploads.data.map((upload, index) => {
                             return (
                                 <>
-                                    <div className="flex w-full aspect-square h-64 border rounded-md col-span-1">
-                                        <img src={upload.file} alt="upload" className="aspect-auto object-contain rounded-lg" />
+                                    <div key={`${index}-88`} className="flex w-full aspect-square h-64 border rounded-md col-span-1 justify-center">
+                                        <img src={upload.file} alt="Uploaded File" className="aspect-auto object-contain rounded-lg" />
                                     </div>
-                                    <div className="flex w-full aspect-square h-64 border rounded-md col-span-1 items-center justify-center">
+                                    <div key={index} className="flex w-full aspect-square h-64 border rounded-md col-span-1 items-center justify-center">
                                         {/* <h2 className="text-xl font-semibold">Upload ID: {upload.id}</h2> */}
                                         {/* <p className="text-sm">File: {upload.file}</p> */}
                                         {
                                             upload.inference_url ? (
                                                 <img src={upload.inference_url} alt="inference" className="w-full h-64 object-contain rounded-lg" />
-                                            ) : (
-                                                <Skeleton className="w-full h-64 rounded-lg" />
+                                            ) : (<>
+
+                                                <Skeleton className="w-full h-64 rounded-lg relative" />
+                                                <p className="absolute font-medium text-sm">
+                                                    Inference is being processed...
+                                                </p>
+                                            </>
                                             )
                                         }
+                                        
                                     </div>
 
                                 </>

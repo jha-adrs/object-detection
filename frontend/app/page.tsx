@@ -53,7 +53,8 @@ export default function Home() {
             filename: file.name,
             key: fields.key,
             inferenceStatus: "PENDING"
-          })
+          });
+          
         } else {
           console.error('S3 Upload Error:', uploadResponse)
           alert('Upload failed.')
