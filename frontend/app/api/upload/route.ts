@@ -8,14 +8,14 @@ export async function POST(request: Request) {
 
     try {
         const client = new S3Client({
-            region: process.env.AWS_REGION,
+            region: process.env.TAWS_REGION,
             credentials: {
-                accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ""
+                accessKeyId: process.env.TAWS_ACCESS_KEY_ID || "",
+                secretAccessKey: process.env.TAWS_SECRET_ACCESS_KEY || ""
             }
         })
         const { url, fields } = await createPresignedPost(client, {
-            Bucket: process.env.AWS_BUCKET_NAME || "mng-cdn-dev",
+            Bucket: process.env.TAWS_BUCKET_NAME || "mng-cdn-dev",
             Key: uuidv4(),
             Conditions: [
                 ['content-length-range', 0, 10485760], // up to 10 MB

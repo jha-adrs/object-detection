@@ -23,7 +23,7 @@ export default function Home() {
       setUploading(true)
 
       const response = await fetch(
-        process.env.NEXT_PUBLIC_BASE_URL + '/api/upload',
+        '/api/upload',
         {
           method: 'POST',
           headers: {
@@ -65,7 +65,7 @@ export default function Home() {
 
       setUploading(false)
     } catch (error) {
-      console.error('Error uploading file:', error)
+      console.log('Error uploading file:', error)
     }
   }
 
